@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuizMaster Pro - Shourya</title>
+  <style>
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      text-align: center; 
+      padding: 50px; 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+      color: white; 
+      min-height: 100vh; 
+    }
+    h1 { font-size: 2.8rem; margin-bottom: 1rem; color: #00ff9d; }
+    p { font-size: 1.2rem; margin: 1rem 0; opacity: 0.9; }
+    .start-btn { 
+      background: #00ff9d; color: #121212; padding: 1rem 2rem; 
+      border: none; border-radius: 50px; font-size: 1.1rem; 
+      cursor: pointer; transition: transform 0.3s; 
+    }
+    .start-btn:hover { transform: scale(1.05); }
+  </style>
+</head>
+<body>
+  <h1>QuizMaster Pro</h1>
+  <p>By Shourya Yadav | 7 Unique Questions | Instant Feedback & Score</p>
+  <p>Get ready! Click below to start the quiz 🚀</p>
+  
+  <button onclick="startQuiz()" class="start-btn">Start Quiz</button>
+
+  <script>
+    // Shourya's Quiz Data - Unique Questions
+    const quizData = [
+      { question: "What is the capital of Japan?", answer: "tokyo" },
+      { question: "Who developed the theory of relativity?", answer: "albert einstein" },
+      { question: "What is the smallest prime number?", answer: "2" },
+      { question: "Which is the largest mammal on Earth?", answer: "blue whale" },
+      { question: "In which year did World War II end?", answer: "1945" },
+      { question: "What is the speed of light in vacuum (m/s)?", answer: "299792458" },
+      { question: "Who wrote Romeo and Juliet?", answer: "william shakespeare" }
+    ];
+
+    let score = 0;
+
+    function startQuiz() {
+      alert("⚡ Welcome to QuizMaster Pro!\n\n7 Questions | Made by Shourya Yadav 🔥\nClick OK to start...");
+      
+      for (let i = 0; i < quizData.length; i++) {
+        let userAns = prompt(Question ${i+1}/7\n\n${quizData[i].question}\n\nYour Answer:);
+
+        if (userAns === null) {
+          alert("Quiz stopped! See you next time 👋");
+          return;
+        }
+
+        if (userAns.trim().toLowerCase() === quizData[i].answer.toLowerCase()) {
+          alert("Correct! 🔥");
+          score++;
+        } else {
+          alert(Wrong! 😅\nCorrect Answer: ${quizData[i].answer});
+        }
+      }
+
+      let percentage = ((score / quizData.length) * 100).toFixed(1);
+      let message = Quiz Over! 🎉\n\nScore: ${score}/7 (${percentage}%)\n\n;
+      
+      if (score === 7) message += "Outstanding! You're a Genius! 🏆";
+      else if (score >= 5) message += "Excellent work, Shourya! 🔥";
+      else if (score >= 3) message += "Good try! Keep practicing 💪";
+      else message += "Better luck next time! 😊";
+
+      alert(message);
+    }
+  </script>
+</body>
+</html>
